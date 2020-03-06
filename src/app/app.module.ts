@@ -11,11 +11,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { LayoutAppComponent } from './components/shared/layout-app/layout-app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
-import { FilterPipe } from './pipes/filter.pipe';
-import { SearchPipe } from './pipes/search.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { DigimonService } from './services/digimon.service';
 
 
 
@@ -35,7 +32,7 @@ import { DigimonService } from './services/digimon.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [DigimonService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

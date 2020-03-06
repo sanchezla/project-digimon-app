@@ -1,1 +1,28 @@
-<app-digimon></app-digimon>
+<div class="loading" *ngIf="!digimons">
+    <mat-spinner></mat-spinner>
+    LOADING DIGIMON....
+</div>
+<div id="page-content-wrapper">
+
+    <div>
+        <h1 class="title">Mundo Digimon</h1>
+    </div>
+
+    <div style="text-align:center" >
+        <div class="grid-layout">
+            <div *ngFor="let digimon of digimons | filter: filterDigimon">
+                <mat-card >
+                    <div class="background-image">
+                        <img mat-card-image src="{{ digimon.img }}" alt="photo of {{ digimon.name }}" />
+                    </div>
+                    <mat-card-title>{{ digimon.name }}</mat-card-title>
+                    <mat-card-content>
+                        <div>
+                            <strong>Level:</strong> {{ digimon.level }}
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

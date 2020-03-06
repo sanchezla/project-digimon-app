@@ -10,9 +10,11 @@ export class FilterPipe implements PipeTransform {
     if (!value) {
       return;
     }
+
     if (!filters) {
       return value;
     }
+    filters = filters.toString();
     filters = filters.toLowerCase();
 
     return value.filter((item) => {

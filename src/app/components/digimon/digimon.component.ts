@@ -9,40 +9,39 @@ import { Digimon } from 'src/app/models/digimon/digimon.interface';
 })
 export class DigimonComponent implements OnInit {
 
-  public digimons: Digimon[] = [];
-  public levelFilters: any;
-  public filterDigimon: any;
+  // public digimons: Digimon[] = [];
+  // public levelFilters: any;
+  // public filterDigimon: any;
 
 
-  constructor(private digimonService: DigimonService) {}
+  constructor(protected digimonService: DigimonService) {}
 
   ngOnInit() {
-    this.getDigimons();
-    this.digimonService.filterEvent.subscribe((data) => {
-      debugger;
-      // this.getDigimonsByLevel(this.digimonService.filterDigimon.level);
-      console.log(this.digimonService.filterDigimon);
-      
-      // this.filterDigimon = data;
-    });
+    // this.getDigimons();
+    // debugger;
+    // this.filterDigimon = this.digimonService.filterDigimon();
+    // this.digimonService.filterEvent.subscribe((data) => {
+    //   debugger;
+    // });
   }
 
-  getDigimons(): void {
-    this.digimonService.getAllDigimons().subscribe(digimons => {
-      // console.log(digimons);
-      this.digimons = digimons;
-      // this.sendDigimons.emit(digimons);
+  // getDigimons(): void {
+  //   this.digimonService.getAllDigimons().subscribe(digimons => {
+  //     // console.log(digimons);
+  //     this.digimons = digimons;
+  //     // this.sendDigimons.emit(digimons);
 
-    });
-  }
+  //   });
+  // }
 
   getDigimonsByLevel(level: string): void {
-    this.digimonService.getAllDigimonsByLevel(level).subscribe(digimons => {
-      // console.log(digimons);
-      this.digimons = digimons;
-      // this.sendDigimons.emit(digimons);
+    // this.digimonService.getAllDigimonsByLevel(level).subscribe(digimons => {
+    //   console.log(digimons);
+    //   this.filterDigimon = digimons;
+      
+    //   this.sendDigimons.emit(digimons);
 
-    });
+    // });
   }
 
 }

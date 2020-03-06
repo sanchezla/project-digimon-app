@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Digimon } from 'src/app/models/digimon/digimon.interface';
+import { DigimonService } from 'src/app/services/digimon.service';
 
 
 @Component({
@@ -8,10 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  public digimons: Digimon[] = [];
+  public filterDigimon: any;
+
+
+  constructor(protected digimonService: DigimonService) {}
 
   ngOnInit() {
 
+    this.digimonService.filterEvent.subscribe((data) => {
+
+        this.getDigimons();
+ 
+        this.filterDigimon = this.digimonService.filterDigimon;
+ 
+    });
+  }
+
+  getDigimons(): void {
+
+    this.digimonService.getAllDigimons().subscribe(digimons => {
+      this.digimons = digimons;
+
+    });
+  }
+
+  getDigimonsByLevel(level: string): void {
+    
+    this.digimonService.getAllDigimonsByLevel(level).subscribe(digimons => {
+      this.filterDigimon = digimons;
+    });
   }
 
 }

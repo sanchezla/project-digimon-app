@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DigimonService } from 'src/app/services/digimon.service';
 
 
 @Component({
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutAppComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected digimonService: DigimonService) { }
 
   ngOnInit() {
+
+    // this.digimonService.filterEvent.subscribe((data) => {
+    //  debugger;
+    // });
   }
 
 }

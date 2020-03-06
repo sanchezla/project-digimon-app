@@ -12,7 +12,7 @@ const url = environment.api;
 export class DigimonService {
 
   private _searchDigimon: Digimon = new Digimon();
-  private _filterDigimon: any;
+  private _filterDigimon: any = new Digimon();
 
   @Output() digimonEvent: EventEmitter<any> = new EventEmitter();
   @Output() filterEvent: EventEmitter<any> = new EventEmitter();
@@ -64,7 +64,7 @@ export class DigimonService {
 
   getAllDigimonsByLevel(level: string): Observable<any> {
     return this.http
-    .get(`${url}/api/digimon/id/${level}`)
+    .get(`${url}/api/digimon/level/${level}`)
     .pipe(catchError(this._handleError));
   }
 

@@ -9,7 +9,7 @@ import { ComponentsRoutingModule } from './components-routing.module';
 import { HomeComponent } from './home/home.component';
 import { DigimonComponent } from './digimon/digimon.component';
 import { MaterialModule } from '../modules/material/material.module';
-import { DigimonService } from '../services/digimon.service';
+// import { DigimonService } from '../services/digimon.service';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { SearchPipe } from '../pipes/search.pipe';
 
@@ -26,6 +26,6 @@ import { SearchPipe } from '../pipes/search.pipe';
       FormsModule,
       MaterialModule
     ],
-    providers: [DigimonService]
+    providers: []
   })
   export class ComponentsModule { }
