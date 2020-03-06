@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <div class="search-box">
+        <input matInput class="search-input" type="text" name="filter" (ngModelChange)="sendSearchDigimon($event)" placeholder="Buscar por Id y Nombre..." />
+        <button mat-button class="close-button" matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+    </div>
+    <div class="filter-component">
+      <mat-label class="filter" style="color: rgb(168, 168, 168);">Filtro por level:</mat-label>
+      <mat-form-field class="form-field" 
+      style="color: rgb(197, 197, 197);">
+          <mat-select name="currentLevel" [(ngModel)]="currentLevel" (change)="onLevelSelected($event)" >
+              <mat-option style="color: rgb(168, 168, 168);">Seleccione</mat-option>
+              <mat-option [value]="level" *ngFor="let level of levels" style="color: rgb(168, 168, 168);">
+                  {{ level }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-toolbar>

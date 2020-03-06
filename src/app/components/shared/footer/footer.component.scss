@@ -1,0 +1,15 @@
+@import 'src/assets/scss/base';
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  background: $gris_dark;
+  padding-top: 15px;
+  
+}
+.text-footer {
+  position: absolute;
+  left: calc(30% + 280px);
+  color: rgb(196, 192, 192);
+}
