@@ -2,39 +2,22 @@
     <div class="card card-container">
         <img id="logo" class="logo-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
         <p id="profile-name" class="profile-name-card"></p>
-        <div >
-          <form class="form-signin">
-            <span id="reauth-rut" class="reauth-rut"></span>
-            <input type="rut" id="inputrut" class="form-control" placeholder="Correo" autofocus>
-            <input type="contraseÃ±a" id="inputcontraseÃ±a" class="form-control" placeholder="Contraseña">
-            <div id="remember" class="checkbox">
-                <label>
+        <div>
+            <form class="form-signin" (submit)="onLogin()">
+                <span id="reauth-rut" class="reauth-rut"></span>
+                <input [(ngModel)]="email" type="email" name="email" class="form-control" placeholder="Correo" autofocus (change)="onLogin()">
+                <input [(ngModel)]="password" type="password" name="password" class="form-control" placeholder="Contraseña" (change)="onLogin()">
+                <div id="remember" class="checkbox">
+                    <label>
                     <input type="checkbox" value="remember-me"> Recordarme
                 </label>
+                </div>
+                <div type="submit" class="btn btn-lg btn-primary btn-block btn-signin">Ingresar</div>
+            </form>
+            <!-- /form -->
+            <div class="card-body d-flex justify-content-around">
+                <button class="btn btn-google" (click)="onClickGoogleLogin()"><i class="fab fa-google-plus" aria-hidden="true"></i> Google</button>
             </div>
-            <div class="btn btn-lg btn-primary btn-block btn-signin" [routerLink]="'/home/'">Ingresar</div>
-        </form>
-        <!-- /form -->
-        <a (click)="contentType='reset'" class="forgot-contraseÃ±a">
-            Olvido su contraseña?
-        </a>
-        <div class="card-body d-flex justify-content-around">
-            <button class="btn btn-google" (click)="onClickGoogleLogin()" ><i class="fab fa-google-plus" aria-hidden="true"></i> Google</button>
-          </div>
-        </div>
-
-        <div *ngIf="contentType === 'reset'">
-          <h6 class="center align-content-sm-center">Olvidaste tu contraseña?</h6>
-          <p>Ingrese su correo electrónico. Le enviaremos un correo para recuperarla </p>
-          <form class="form-signin">
-              <span id="reauth-rut" class="reauth-rut"></span>
-              <input type="rut" id="inputrut" class="form-control" placeholder="RUT" required autofocus>
-              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" routerLink="/login">Recuperar Contraseña</button>
-          </form>
-          <!-- /form -->
-          <a (click)="contentType='login'" class="regresar">
-              Regresar
-          </a>
         </div>
 
     </div>

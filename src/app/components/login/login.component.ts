@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,10 @@ import {FlashMessagesService} from 'angular2-flash-messages';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public email: string;
-  public password: string;
+  public email: string = '';
+  public password: string = '';
+
+  public contentType: string;
 
   constructor(
     private authService: AuthService,
@@ -21,6 +24,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onLogin(): void {
+     
+    this.authService.loginEmail(this.email, this.password)
+      .then((res) => {
+        this.router.navigate(['/home']);
+      }).catch( err => console.log('err', err.message));
+    }
 
   onClickGoogleLogin() {
    this.authService.loginGoogle()

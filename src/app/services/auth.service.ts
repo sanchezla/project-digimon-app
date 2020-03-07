@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UserI } from '../models/user.interface';
+import { isNullOrUndefined } from "util";
 
 @Injectable({
     providedIn: 'root'
@@ -14,14 +16,6 @@ export class AuthService {
 
   loginGoogle() {
     return this.afAuth.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider());
-  }
-
-  registerUser(email: string, pass: string) {
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-      .then( userData =>  resolve(userData),
-      err => reject (err));
-    });
   }
 
   loginEmail(email: string, pass: string) {
@@ -38,6 +32,16 @@ export class AuthService {
 
   logout() {
     return this.afAuth.auth.signOut();
+  }
+
+  getCurrentUser(): UserI {
+    let user_string = localStorage.getItem("currentUser");
+    if (!isNullOrUndefined(user_string)) {
+      let user: UserI = JSON.parse(user_string);
+      return user;
+    } else {
+      return null;
+    }
   }
 
 }
