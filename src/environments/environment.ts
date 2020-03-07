@@ -5,6 +5,16 @@
 export const environment = {
   production: false,
   api: 'https://digimon-api.herokuapp.com',
+  firebaseConfig : {
+    apiKey: "AIzaSyCZ83dkoCtMSOZLF7_0O7ZiPzjh8sNhiho",
+    authDomain: "digimon-app-694bc.firebaseapp.com",
+    databaseURL: "https://digimon-app-694bc.firebaseio.com",
+    projectId: "digimon-app-694bc",
+    storageBucket: "digimon-app-694bc.appspot.com",
+    messagingSenderId: "630032219464",
+    appId: "1:630032219464:web:588fe771b0a8e78759477d",
+    measurementId: "G-HFXZZC3489"
+  }
 };
 /*
  * For easier debugging in development mode, you can import the following file

@@ -10,7 +10,7 @@
 
     <div style="text-align:center" >
         <div class="grid-layout">
-            <div *ngFor="let digimon of digimons | filter: filterDigimon">
+            <div *ngFor="let digimon of digimons | filter: filterDigimon | search: searchDigimon">
                 <mat-card >
                     <div class="background-image">
                         <img mat-card-image src="{{ digimon.img }}" alt="photo of {{ digimon.name }}" />

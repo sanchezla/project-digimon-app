@@ -11,8 +11,8 @@ const url = environment.api;
 })
 export class DigimonService {
 
-  private _searchDigimon: Digimon = new Digimon();
-  private _filterDigimon: any = new Digimon();
+  private _searchDigimon: any;
+  private _filterDigimon: any;
 
   @Output() digimonEvent: EventEmitter<any> = new EventEmitter();
   @Output() filterEvent: EventEmitter<any> = new EventEmitter();
@@ -25,8 +25,8 @@ export class DigimonService {
     return this._searchDigimon;
   }
 
-  public set searchDigimon(s) {
-    this._searchDigimon = s;
+  public set searchDigimon(search) {
+    this._searchDigimon = search;
     setTimeout(() => {
       this.digimonEvent.emit(true);
     }, 10);
@@ -36,8 +36,9 @@ export class DigimonService {
     return this._filterDigimon;
   }
 
-  public set filterDigimon(f) {
-    this._filterDigimon = f;
+  public set filterDigimon(filter: string) {
+    // debugger;
+    this._filterDigimon = filter;
     setTimeout(() => {
       this.filterEvent.emit(true);
     }, 10);

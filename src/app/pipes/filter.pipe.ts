@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
     if (!filters) {
       return value;
     }
-    filters = filters.toString();
+    // filters = filters.toString();
     filters = filters.toLowerCase();
 
     return value.filter((item) => {

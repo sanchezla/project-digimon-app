@@ -1,6 +1,7 @@
 <mat-toolbar>
     <div class="search-box">
-        <input matInput class="search-input" type="text" name="filter" (ngModelChange)="sendSearchDigimon($event)" placeholder="Buscar por Id y Nombre..." />
+        <input matInput class="search-input" id="search" type="text" [(ngModel)]="search"
+        (ngModelChange)="onSearch($event)" placeholder="Buscar por Id y Nombre..." />
         <button mat-button class="close-button" matSuffix mat-icon-button aria-label="Clear">
       <mat-icon>close</mat-icon>
     </button>
@@ -15,5 +16,6 @@
                   {{ level }}</mat-option>
           </mat-select>
       </mat-form-field>
+      
     </div>
   </mat-toolbar>

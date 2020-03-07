@@ -11,19 +11,24 @@ import { DigimonService } from 'src/app/services/digimon.service';
 export class HomeComponent implements OnInit {
 
   public digimons: Digimon[] = [];
-  public filterDigimon: any;
+  public filterDigimon: string;
+  public searchDigimon: string;
 
 
   constructor(protected digimonService: DigimonService) {}
 
   ngOnInit() {
 
-    this.digimonService.filterEvent.subscribe((data) => {
+    this.getDigimons();
 
-        this.getDigimons();
- 
+    this.digimonService.filterEvent.subscribe((data) => {
+        // console.log(data);
         this.filterDigimon = this.digimonService.filterDigimon;
- 
+    });
+
+    this.digimonService.digimonEvent.subscribe((data) => {
+      // console.log(data);
+      this.searchDigimon = this.digimonService.searchDigimon;
     });
   }
 
@@ -31,14 +36,16 @@ export class HomeComponent implements OnInit {
 
     this.digimonService.getAllDigimons().subscribe(digimons => {
       this.digimons = digimons;
+      console.log(digimons);
+      
 
     });
   }
 
   getDigimonsByLevel(level: string): void {
-    
+
     this.digimonService.getAllDigimonsByLevel(level).subscribe(digimons => {
-      this.filterDigimon = digimons;
+      this.filterDigimon = digimons.level;
     });
   }
 
