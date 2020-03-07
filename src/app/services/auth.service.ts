@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserI } from '../models/user.interface';
 import { isNullOrUndefined } from "util";
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,8 @@ import { isNullOrUndefined } from "util";
 export class AuthService {
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private router: Router
   ) { }
 
   loginGoogle() {
@@ -31,17 +33,19 @@ export class AuthService {
   }
 
   logout() {
-    return this.afAuth.auth.signOut();
+    localStorage.clear();  
+    return this.router.navigate(['/login']);
   }
 
   getCurrentUser(): UserI {
     let user_string = localStorage.getItem("currentUser");
     if (!isNullOrUndefined(user_string)) {
-      let user: UserI = JSON.parse(user_string);
+      let user: UserI = JSON.parse(user_string);      
       return user;
     } else {
       return null;
     }
   }
+
 
 }

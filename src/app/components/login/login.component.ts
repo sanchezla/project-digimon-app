@@ -2,8 +2,6 @@ import { NgZone } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import {FlashMessagesService} from 'angular2-flash-messages';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
       }).catch( err => console.log('err', err.message));
     }
 
-  onClickGoogleLogin() {
+  onClickGoogleLogin(): void {
    this.authService.loginGoogle()
     .then((res) => {
         this.router.navigate(['/home']);

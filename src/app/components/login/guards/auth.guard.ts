@@ -7,16 +7,18 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
+
   constructor(private authService: AuthService,
     private router: Router) {}
   
     canActivate() {
-    if (this.authService.getCurrentUser()) {
+    if (!this.authService.getCurrentUser()) {
+      console.log('Bienvenido a Digimon App!');
       return true;
-  } else {
-    this.router.navigate(['/login']);
-    return false;
-  }
-  
-  }
+    } else {
+      console.log('Debe iniciar sesión.');
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }  
 }
